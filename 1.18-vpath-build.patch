@@ -1,0 +1,11 @@
+--- origsrc/enca-1.18/Makefile.am	2016-01-04 12:12:05.000000000 -0600
++++ src/enca-1.18/Makefile.am	2016-02-09 16:29:23.590830600 -0600
+@@ -42,7 +42,7 @@ EXTRA_DIST = \
+ test: check
+ 
+ docs:
+-	cd $(srcdir)/devel-docs && $(MAKE) docs
++	cd devel-docs && $(MAKE) docs
+ 
+ .PHONY: test docs
+ 

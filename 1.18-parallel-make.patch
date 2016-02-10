@@ -1,0 +1,11 @@
+--- origsrc/enca-1.18/tools/Makefile.am	2016-01-04 12:12:05.000000000 -0600
++++ src/enca-1.18/tools/Makefile.am	2016-02-09 16:32:24.167760900 -0600
+@@ -29,7 +29,7 @@ all: encodings.h
+ encodings.sed: $(top_builddir)/iconvenc.h
+ 	sed -e 's/^#define \([A-Z0-9_]*\) \(.*\)/@\1@ \2/' -e 's/"//g' -e 's/NULL$$//' -e 's/ /\//' -e 's/^\(.*\)$$/s\/\1\//' $(top_builddir)/iconvenc.h >encodings.sed
+ 
+-encodings.h: encodings.sed $(srcdir)/encodings.dat make_hash
++encodings.h: encodings.sed $(srcdir)/encodings.dat make_hash$(EXEEXT)
+ 	sed -f encodings.sed $(srcdir)/encodings.dat | ./make_hash >encodings.h
+ 
+ # Normally there's no need to regenerate tables, they are copy-and-pasted

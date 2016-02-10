@@ -1,0 +1,11 @@
+--- origsrc/enca-1.18/lib/Makefile.am	2016-01-04 12:12:05.000000000 -0600
++++ src/enca-1.18/lib/Makefile.am	2016-02-09 16:28:18.591076700 -0600
+@@ -6,7 +6,7 @@ lib_LTLIBRARIES = libenca.la
+ # Any iface change    C++: 0:   A
+ # Adding ifaces       C:   R:   A++
+ # Changing ifaces     C:   R:   0
+-libenca_la_LDFLAGS = -version-info 5:1:5
++libenca_la_LDFLAGS = -version-info 5:1:5 -no-undefined
+ libenca_la_SOURCES = \
+   common.c \
+   ctype.c \

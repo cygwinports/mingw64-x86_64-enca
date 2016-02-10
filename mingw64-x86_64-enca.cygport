@@ -1,0 +1,29 @@
+CROSS_HOST="x86_64-w64-mingw32"
+inherit cross
+
+NAME="mingw64-x86_64-enca"
+VERSION=1.18
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="Character set analyser library for Win64 toolchain"
+DESCRIPTION="Enca is an Extremely Naive Charset Analyser. It detects character
+set and encoding of text files and can also convert them to other encodings.
+The charset detecing functionality is also available as a library."
+HOMEPAGE="http://cihar.com/software/enca/"
+SRC_URI="http://dl.cihar.com/enca/enca-${VERSION}.tar.xz"
+SRC_DIR="enca-${VERSION}"
+PATCH_URI="
+	1.18-no-undefined.patch
+	1.18-parallel-make.patch
+	1.18-vpath-build.patch
+"
+
+ACLOCAL_FLAGS="-I m4"
+CYGCONF_ARGS="--disable-librecode --disable-external"
+
+src_install() {
+	cd ${B}
+	cyginstall bin_PROGRAMS=
+	rm -f  ${D}${CROSS_BINDIR}/en*
+	rm -fr ${D}${CROSS_PREFIX}/{libexec/enca,share/gtk-doc,share/man}
+}
